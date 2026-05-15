@@ -142,6 +142,7 @@ namespace MessengerServer
 
         private async Task HandleFileDownloadAsync(Message message, ClientSession sender)
         {
+            // Здесь можно реализовать файловое хранилище
             Log($"Запрос на скачивание файла от {sender.UserId}");
         }
 

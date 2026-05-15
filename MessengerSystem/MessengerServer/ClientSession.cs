@@ -22,12 +22,14 @@ namespace MessengerServer
 
         public async Task HandshakeAsync()
         {
+            // Получаем Handshake сообщение
             var handshakeMsg = await ReceiveMessageAsync();
             if (handshakeMsg.Type != MessageType.Handshake)
                 throw new Exception("Invalid handshake");
             
             UserId = handshakeMsg.SenderId;
             
+            // Отправляем подтверждение
             var ack = new Message { Type = MessageType.Status, Success = true, Content = "Connected" };
             await SendMessageAsync(ack);
         }
